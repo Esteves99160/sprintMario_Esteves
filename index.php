@@ -40,6 +40,10 @@ try {
                 <span class="label">PONTOS:</span>
                 <span class="value" id="score-display">0</span>
             </div>
+            <div class="vidas-container">
+                <span>Vidas:</span>
+                <span id="vidas-display">❤️ ❤️ ❤️</span>
+            </div>
         </header>
 
         
@@ -52,7 +56,7 @@ try {
             </div>
 
             <img src="assets/bobesponja.gif" class="bob-esponja" alt="Bob Esponja">
-            <img src="assets/balde.png" class="pipe" alt="Balde de lixo">
+            <img src="assets/pedra.png" class="pipe" alt="Pedra">
             <img src="./assets/espatula.png" class="espatula" id="espatula" alt="">
             <span class="jump-tip" id="jump-tip">Pressione ESPAÇO ou clique para pular</span>
         </main>
@@ -81,7 +85,7 @@ try {
                 </div>
 
                 <div class="modal-actions">
-                    <button type="submit" class="btn btn-primary" id="btn-start">INICIAR JOGO</button>
+                    <button type="submit" class="btn btn-primary" id="btn-start">ESCOLHER PERSONAGEM</button>
                     <button type="button" class="btn btn-secondary" id="btn-view-ranking">VER RANKING</button>
                 </div>
             </form>
@@ -92,7 +96,56 @@ try {
         </div>
     </div>
 
-    <!-- 2. TELA DE GAME OVER & RANKING -->
+    
+    <!-- 2. TELA DE ESCOLHER PERSONAGEM -->
+    <div class="modal-overlay" id="character-modal">
+        <div class="modal-card character-card">
+
+            <div class="modal-header">
+                <h2 class="game-title">ESCOLHA SEU PERSONAGEM!</h2>
+                <p class="game-subtitle">
+                    Quem vai correr pela Fenda do Biquíni?
+                </p>
+            </div>
+
+            <div class="character-list">
+
+                <button type="button" class="character-option"
+                    data-name="Bob Esponja"
+                    data-image="assets/bobesponja.gif">
+                    <img src="assets/bobesponja.gif" alt="Bob Esponja">
+                    <span>Bob Esponja</span>
+                </button>
+
+                <button type="button" class="character-option"
+                    data-name="Sonic"
+                    data-image="assets/sonic.gif">
+                    <img src="assets/sonic.gif" alt="Sonic">
+                    <span>Sonic</span>
+                </button>
+
+            </div>
+
+            <p id="selected-character">
+                Escolha um personagem acima.
+            </p>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary"
+                    id="btn-back-start">
+                    VOLTAR
+                </button>
+
+                <button type="button" class="btn btn-primary"
+                    id="btn-start-selected" disabled>
+                    INICIAR JOGO
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 3. TELA DE GAME OVER & RANKING -->
     <div class="modal-overlay" id="gameover-modal">
         <div class="modal-card gameover-card">
             <div class="modal-header">

@@ -27,80 +27,82 @@ body {
     align-items: center;
 }
 
-/* Barra Superior (HUD) */
 .hud-bar {
     width: 100%;
     background: linear-gradient(180deg, #2b3044 0%, #1a1e2d 100%);
-    border: 3px solid #ffcc00;
+    border: 3px solid #00BFFF;
     border-bottom: none;
     border-radius: 12px 12px 0 0;
     padding: 12px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.25);
 }
 
-.player-info, .score-info {
+.player-info,
+.score-info {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .label {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 11px;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
     color: #ffcc00;
-    letter-spacing: 1px;
+    letter-spacing: 0;
 }
 
 .value {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
     color: #ffffff;
     text-shadow: 2px 2px #000;
 }
 
-/* Tabuleiro do Jogo */
 .game-board {
     width: 100%;
     height: 480px;
-    border-left: 4px solid #333;
-    border-right: 4px solid #333;
+    border-left: 4px solid #00BFFF;
+    border-right: 4px solid #00BFFF;
     border-bottom: none;
     border-radius: 0 0 12px 12px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-
+    isolation: isolate;
     background-image: url('../assets/fenda-biquini.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
     cursor: pointer;
 }
 
-/* Elementos do Jogo */
-.pipe{
-    position: absolute;
-    bottom: 0;
-    width: 150px;
-    height: 130px;
-    object-fit: contain;
-}
-
+/* Bob Esponja menor */
 .bob-esponja {
+    width: 95px;
+    height: 95px;
+    object-fit: contain;
     position: absolute;
     bottom: 0;
     left: 20px;
     z-index: 10;
-    width: 130px;
-    height: 130px;
 }
 
-/* Dica de pulo na tela */
+.pipe {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: 0;
+    left: 100%;
+    object-fit: contain;
+    z-index: 5;
+}
+
 .jump-tip {
     position: absolute;
     bottom: 40px;
@@ -108,13 +110,13 @@ body {
     transform: translateX(-50%);
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
-    color: #FFFFFF;
+    color: #ffffff;
     pointer-events: none;
     transition: opacity 0.3s;
     font-weight: bolder;
+    z-index: 11;
 }
 
-/* Animações ativas durante o jogo */
 .game-board.running .pipe {
     animation: none;
 }
@@ -131,6 +133,7 @@ body {
     from {
         right: -80px;
     }
+
     to {
         right: 100%;
     }
@@ -140,12 +143,15 @@ body {
     0% {
         bottom: 0;
     }
+
     40% {
-        bottom: 180px;
+        bottom: 140px;
     }
-    50% {
-        bottom: 180px;
+
+    60% {
+        bottom: 140px;
     }
+
     100% {
         bottom: 0;
     }
@@ -155,12 +161,12 @@ body {
     from {
         right: -550px;
     }
+
     to {
         right: 100%;
     }
 }
 
-/* Modais / Telas Sobrepostas */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -183,13 +189,13 @@ body {
 
 .modal-card {
     background: #1f2438;
-    border: 4px solid #e52521;
+    border: 4px solid #00BFFF;
     border-radius: 16px;
     padding: 30px;
     width: 100%;
     max-width: 480px;
     text-align: center;
-    box-shadow: 0 0 30px rgba(229, 37, 33, 0.4), 0 15px 40px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 30px rgba(0, 191, 255, 0.35), 0 15px 40px rgba(0, 0, 0, 0.7);
 }
 
 .modal-header {
@@ -210,7 +216,6 @@ body {
     color: #a4b1cd;
 }
 
-/* Formulário de Início */
 .start-form {
     display: flex;
     flex-direction: column;
@@ -234,7 +239,7 @@ body {
     width: 100%;
     padding: 14px 18px;
     border-radius: 8px;
-    border: 2px solid #3b4468;
+    border: 2px solid #00BFFF;
     background: #121524;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
@@ -245,11 +250,10 @@ body {
 }
 
 .input-group input:focus {
-    border-color: #ffcc00;
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    border-color: #00BFFF;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
 }
 
-/* Botões */
 .modal-actions {
     display: flex;
     flex-direction: column;
@@ -270,15 +274,16 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(180deg, #e52521 0%, #b81410 100%);
+    background: linear-gradient(180deg, #0877B9 0%, #064A7A 100%);
     color: #ffffff;
-    border-bottom: 4px solid #7a0b08;
+    border: none;
+    border-bottom: 4px solid #033653;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(180deg, #ff3833 0%, #cf1915 100%);
+    background: linear-gradient(180deg, #1095D8 0%, #0877B9 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(229, 37, 33, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 191, 255, 0.4);
 }
 
 .btn-primary:active {
@@ -287,17 +292,17 @@ body {
 }
 
 .btn-secondary {
-    background: #2f3752;
-    color: #cbd5e1;
-    border-bottom: 4px solid #1a1e2f;
+    background: #123B5D;
+    color: #ffffff;
+    border: none;
+    border-bottom: 4px solid #08263D;
 }
 
 .btn-secondary:hover {
-    background: #3c4667;
+    background: #1A527A;
     color: #ffffff;
 }
 
-/* Status do Laragon */
 .server-status {
     margin-top: 20px;
     font-size: 11px;
@@ -326,14 +331,13 @@ body {
     box-shadow: 0 0 8px #ef4444;
 }
 
-/* Tela de Game Over & Ranking */
 .gameover-card {
     max-width: 540px;
 }
 
 .gameover-title {
     font-family: 'Press Start 2P', cursive;
-    color: #e52521;
+    color: #064A7A;
     font-size: 26px;
     text-shadow: 3px 3px #000;
     margin-bottom: 10px;
@@ -344,7 +348,7 @@ body {
     border-radius: 8px;
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #333d5d;
+    border: 1px solid #00BFFF;
 }
 
 .final-score-label {
@@ -360,7 +364,6 @@ body {
     text-shadow: 2px 2px #000;
 }
 
-/* Tabela de Ranking */
 .ranking-container {
     margin-bottom: 20px;
 }
@@ -378,12 +381,13 @@ body {
     overflow-y: auto;
     border-radius: 8px;
     background: #121524;
-    border: 1px solid #2b334d;
+    border: 1px solid #00BFFF;
 }
 
 .table-wrapper::-webkit-scrollbar {
     width: 6px;
 }
+
 .table-wrapper::-webkit-scrollbar-thumb {
     background: #3b4468;
     border-radius: 4px;
@@ -445,42 +449,58 @@ body {
         opacity: 0;
         transform: scale(0.96);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
     }
 }
 
-/* Responsividade */
+/* Ajustes para celular */
 @media (max-width: 600px) {
     .game-board {
         height: 380px;
     }
+
     .bob-esponja {
-        width: 100px;
+        width: 80px;
+        height: 80px;
     }
+
+    
     .pipe {
-        width: 60px;
+        width: 95px;
+        height: 95px;
     }
+
+    .espatula {
+        width: 50px;
+        height: 50px;
+    }
+
     .hud-bar {
         padding: 10px 14px;
     }
+
     .label {
         font-size: 9px;
     }
+
     .value {
         font-size: 11px;
     }
+
     .game-title {
         font-size: 16px;
     }
+
     .btn {
         font-size: 10px;
         padding: 12px 14px;
     }
 }
 
-/* Cenário infinito */
+/* Cenário em movimento */
 .scenario-track {
     position: absolute;
     top: 0;
@@ -490,7 +510,7 @@ body {
     display: flex;
     animation: moverCenario 20s linear infinite;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
 }
 
 .scenario-track img {
@@ -500,7 +520,6 @@ body {
     object-fit: cover;
 }
 
-/* Movimento contínuo para a esquerda */
 @keyframes moverCenario {
     from {
         transform: translateX(0);
@@ -511,13 +530,14 @@ body {
     }
 }
 
+/* Espátulas menores */
 .espatula {
     position: absolute;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
     bottom: 100px;
     left: 100%;
-    object-fit: contain;
     z-index: 2;
     animation: flutuar-espatula 0.8s ease-in-out infinite alternate;
 }
@@ -526,11 +546,13 @@ body {
     from {
         transform: translateY(10px);
     }
+
     to {
         transform: translateY(-35px);
     }
 }
 
+/* Pontuação flutuante ao coletar espátulas */
 .pontos-flutuantes {
     position: absolute;
     color: #ffe600;
@@ -583,4 +605,190 @@ body {
         opacity: 0;
         transform: translateY(-20px) scale(1);
     }
+}
+
+/* Efeito visual ao sofrer dano */
+.bob-esponja.dano {
+    animation: efeito-dano 0.5s steps(1);
+    will-change: opacity;
+}
+
+@keyframes efeito-dano {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    20%, 60% {
+        opacity: 0;
+    }
+
+    40%, 80% {
+        opacity: 1;
+    }
+}
+
+/* Seleção de personagens */
+.character-card {
+    width: 95%;
+    max-width: 850px;
+}
+
+.character-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.character-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 8px;
+    background: #172033;
+    border: 3px solid #00BFFF;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.character-option img {
+    width: 100px;
+    height: 110px;
+    object-fit: contain;
+}
+
+.character-option:hover {
+    transform: translateY(-5px);
+    border-color: #00BFFF;
+}
+
+.character-option.selected {
+    border-color: #00BFFF;
+    background: #243752;
+}
+
+#selected-character {
+    margin: 15px 0;
+    color: #facc15;
+    font-weight: bold;
+    text-align: center;
+}
+
+#btn-start-selected:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .character-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .character-option img {
+        width: 80px;
+        height: 90px;
+    }
+}
+
+/* Cenário do Sonic */
+.game-board.sonic-mode {
+    background-image: url('../assets/green-hill.png');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.game-board.sonic-mode .scenario-track img {
+    position: relative;
+    top: 40px;
+}
+
+.game-board.sonic-mode .bob-esponja {
+    bottom: 60px;
+}
+
+.game-board.sonic-mode .pipe {
+    width: 130px;
+    height: 130px;
+    bottom: 60px;
+    object-fit: contain;
+}
+
+/* Personagem menor no modo Sonic */
+.game-board.sonic-mode .bob-esponja[src*="sonic"] {
+    width: 75px !important;
+    height: 75px !important;
+    object-fit: contain;
+}
+
+/* Obstáculo menor no modo Sonic */
+.game-board.sonic-mode .pipe {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+}
+
+/* Anel no modo Sonic */
+.game-board.sonic-mode .espatula {
+    width: 50px;
+    height: 50px;
+    bottom: 120px;
+}
+
+/* Aviso de aumento de velocidade */
+.aviso-velocidade {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    padding: 18px 12px;
+    background: rgba(20, 20, 35, 0.92);
+    border: 3px solid #ffcc00;
+    border-radius: 12px;
+    color: #ffcc00;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: center;
+    text-shadow: 2px 2px #000;
+    z-index: 50;
+    pointer-events: none;
+    animation: aparecer-aviso 0.3s ease-out;
+}
+
+@keyframes aparecer-aviso {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Título da tela de escolher personagem */
+.character-card .game-title {
+    color: #064A7A;
+    text-shadow: 2px 2px #000000;
+}
+
+/* Título Fenda do Biquini */
+.game-title {
+    color: #081088 !important;
+    text-shadow: 2px 2px #000000;
+}
+
+/* Título Escolher Personagem */
+.character-card .game-title {
+    color: #081088  !important;
+    text-shadow: 2px 2px #000000;
 }
